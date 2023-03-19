@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -10,31 +10,35 @@
     <!-- Fuentes -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Lato&family=Oswald:wght@600&display=swap" rel="stylesheet">
 
     <!-- Iconos -->
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 </head>
 <body>
+    <div class="pomodoros-completados-container"><p>Pomodoros completados:</p><p class="pomodoros-completados"></p></div>
     <div class="cronometro-container">
         <div class="cronometro">
             <div class="minutos-container">
-                <div class="numero-container">
+                <div class="numero-container" id="numero-container1">
                     <p class="numero" id="minuto1">2</p>
                 </div>
-                <div class="numero-container">
+                <div class="numero-container" id="numero-container2">
                     <p class="numero" id="minuto2">5</p>
                 </div>
             </div>
             <div class="segundos-container">
-                <div class="numero-container">
+                <div class="numero-container" id="numero-container3">
                     <p class="numero" id="segundo1">0</p>
                 </div>
-                <div class="numero-container">
+                <div class="numero-container" id="numero-container4">
                     <p class="numero" id="segundo2">0</p>
                 </div>
             </div>
         </div>
+    </div>
+    <div class="mensaje-container">
+        <p class="mensaje">El descanso comenzará automaticamente en 10 segundos...</p>
     </div>
     <section class="botones">
         <button class="button" id="play-button" type="button">
