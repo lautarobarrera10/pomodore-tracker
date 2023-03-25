@@ -2,9 +2,9 @@
 let descanso = false;
 let activado = false;
 let segundo1 = 0;
-let segundo2 = 3;
-let minuto1 = 0;
-let minuto2 = 0;
+let segundo2 = 0;
+let minuto1 = 2;
+let minuto2 = 5;
 
 // Contenedores de números
 const numeroContainer1 = document.querySelector('#numero-container1');
@@ -110,7 +110,7 @@ function avanzarUnsegundo() {
                             segundosTransicion = 10;
                             mensajeInicioSiguientePomodoro();
                             descanso = false;
-                            setearTiempo(0,0,0,3);
+                            setearTiempo(2,5,0,0);
                             setTimeout(() => {
                                 activarCronometro();
                                 mensajeContainer.classList.remove('activate');
@@ -145,7 +145,7 @@ function correrDescanso() {
     if (pomodorosCompletados % 4 == 0) {
         setearTiempo(1,5,0,0);
     } else {
-        setearTiempo(0,0,0,3);
+        setearTiempo(0,5,0,0);
     }
     descanso = true;
     mensajeInicioDescanso();

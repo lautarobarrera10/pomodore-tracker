@@ -89,15 +89,9 @@ body {
 }
 
 .pomodoros-completados-container {
-    opacity: .5;
     margin: 40px;
     display: flex;
     justify-content: end;
-}
-
-.pomodoros-completados-container:hover {
-    opacity: 1;
-    cursor: pointer;
 }
 
 .pomodoros-completados-container p {
@@ -107,4 +101,13 @@ body {
     color: #d9d9d9;
     border-radius: 5px;
     font-size: 32px;
+}
+
+.pomodoros-completados-text {
+    opacity: .5;
+}
+
+.pomodoros-completados-text:hover {
+    opacity: 1;
+    cursor: pointer;
 }
