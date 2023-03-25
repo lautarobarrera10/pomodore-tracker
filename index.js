@@ -21,6 +21,7 @@ function setearTiempo(m1,m2,s1,s2){
     minuto2DOM.textContent = minuto2;
     segundo1DOM.textContent = segundo1;
     segundo2DOM.textContent = segundo2;
+    document.title = "Pomodoro Tracker " + m1 + m2 + ":" + s1 + s2;
 }
 
 // Timbre de pomodoro completado
@@ -30,6 +31,7 @@ const audio = document.querySelector('#audio');
 const playButton = document.querySelector('#play-button');
 const stopButton = document.querySelector('#stop-button');
 const playandpauseIcon = document.querySelector('#playandpause-icon');
+const checkButton = document.querySelector('#check-button');
 
 // Mensaje de transición
 const mensajeContainer = document.querySelector('.mensaje-container');
@@ -62,6 +64,22 @@ stopButton.addEventListener('click', () => {
         setearTiempo(2,5,0,0);
     }
 });
+
+checkButton.addEventListener('click', completarActual);
+
+function sumarUnPomodoro() {
+    pomodorosCompletados++;
+    completadosDOM.textContent = pomodorosCompletados;
+}
+
+function completarActual() {
+    if (!descanso) {
+        descanso = true;
+        sumarUnPomodoro();
+        numerosEnVerde();
+        setearTiempo(0,5,0,0);
+    }
+}
 
 
 // Cronometro en el DOM
@@ -100,8 +118,7 @@ function avanzarUnsegundo() {
                         audio.play();
                         if (!descanso){
                             // Si todo está en 0 y no era un descanso
-                            pomodorosCompletados += 1;
-                            completadosDOM.textContent = pomodorosCompletados;
+                            sumarUnPomodoro();
                             pausarCronometro();
                             correrDescanso();
                         } else {
@@ -152,11 +169,15 @@ function correrDescanso() {
     setTimeout(() => {
         activarCronometro();
         mensajeContainer.classList.remove('activate');
-        numeroContainer1.classList.add('descanso');
-        numeroContainer2.classList.add('descanso');
-        numeroContainer3.classList.add('descanso');
-        numeroContainer4.classList.add('descanso');
+        numerosEnVerde();
     }, 10000);
+}
+
+function numerosEnVerde() {
+    numeroContainer1.classList.add('descanso');
+    numeroContainer2.classList.add('descanso');
+    numeroContainer3.classList.add('descanso');
+    numeroContainer4.classList.add('descanso');
 }
 
 let segundosTransicion = 10;
