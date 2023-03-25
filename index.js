@@ -5,6 +5,7 @@ let segundo1 = 0;
 let segundo2 = 0;
 let minuto1 = 2;
 let minuto2 = 5;
+document.title = "Pomodoro Tracker " + minuto1 + minuto2 + ":" + segundo1 + segundo2;
 
 // Contenedores de números
 const numeroContainer1 = document.querySelector('#numero-container1');
@@ -21,7 +22,7 @@ function setearTiempo(m1,m2,s1,s2){
     minuto2DOM.textContent = minuto2;
     segundo1DOM.textContent = segundo1;
     segundo2DOM.textContent = segundo2;
-    document.title = "Pomodoro Tracker " + m1 + m2 + ":" + s1 + s2;
+    document.title = "Pomodoro Tracker " + minuto1 + minuto2 + ":" + segundo1 + segundo2;
 }
 
 // Timbre de pomodoro completado
@@ -75,9 +76,19 @@ function sumarUnPomodoro() {
 function completarActual() {
     if (!descanso) {
         descanso = true;
+        pausarCronometro();
         sumarUnPomodoro();
-        numerosEnVerde();
-        setearTiempo(0,5,0,0);
+        activarNumerosVerdes();
+        if (pomodorosCompletados % 4 == 0 && pomodorosCompletados != 0) {
+            setearTiempo(1,5,0,0);
+        } else {
+            setearTiempo(0,5,0,0);
+        }
+    } else {
+        descanso = false;
+        pausarCronometro();
+        desactivarNumerosVerdes();
+        setearTiempo(2,5,0,0);
     }
 }
 
@@ -169,15 +180,22 @@ function correrDescanso() {
     setTimeout(() => {
         activarCronometro();
         mensajeContainer.classList.remove('activate');
-        numerosEnVerde();
+        activarNumerosVerdes();
     }, 10000);
 }
 
-function numerosEnVerde() {
+function activarNumerosVerdes() {
     numeroContainer1.classList.add('descanso');
     numeroContainer2.classList.add('descanso');
     numeroContainer3.classList.add('descanso');
     numeroContainer4.classList.add('descanso');
+}
+
+function desactivarNumerosVerdes() {
+    numeroContainer1.classList.remove('descanso');
+    numeroContainer2.classList.remove('descanso');
+    numeroContainer3.classList.remove('descanso');
+    numeroContainer4.classList.remove('descanso');
 }
 
 let segundosTransicion = 10;
