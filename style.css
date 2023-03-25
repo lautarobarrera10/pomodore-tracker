@@ -1,7 +1,31 @@
 body {
     font-family: 'Oswald', sans-serif;
     background-color: #1e1e1e;
-    overflow: hidden;
+}
+
+.pomodoros-completados-container {
+    width: 660px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: end;
+}
+
+.pomodoros-completados-container p {
+    margin: 20px 0;
+    padding: 12px;
+    background-color: #4e4e4e;
+    color: #d9d9d9;
+    border-radius: 5px;
+    font-size: 24px;
+}
+
+.pomodoros-completados-text {
+    opacity: .5;
+}
+
+.pomodoros-completados-text:hover {
+    opacity: 1;
+    cursor: pointer;
 }
 
 .cronometro-container {
@@ -11,7 +35,7 @@ body {
 
 .cronometro {
     display: flex;
-    gap: 56px;
+    gap: 16px;
 }
 
 .minutos-container, .segundos-container {
@@ -20,9 +44,9 @@ body {
 }
 
 .numero-container {
-    margin: 14px;
-    height: 351px;
-    width: 206px;
+    margin: 8px;
+    height: 280px;
+    width: 150px;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -33,13 +57,13 @@ body {
 }
 
 .numero-container.descanso {
-    height: 341px;
-    width: 196px;
+    height: 270px;
+    width: 140px;
     border: 5px solid green;
 }
 
 .numero {
-    font-size: 220px;
+    font-size: 160px;
     font-weight: 600;
 }
 
@@ -54,8 +78,8 @@ body {
     font-family: 'Lato', sans-serif;
     font-weight: 400;
     color: white;
-    width: 965px;
-    font-size: 20px;
+    width: 660px;
+    font-size: 18px;
 }
 
 .mensaje-container.activate {
@@ -70,8 +94,8 @@ body {
 }
 
 .button {
-    width: 100px;
-    height: 100px;
+    width: 80px;
+    height: 80px;
     border-radius: 50%;
     border: none;
     background-color: #4e4e4e;
@@ -85,29 +109,5 @@ body {
 }
 
 .button span {
-    font-size: 44px;
-}
-
-.pomodoros-completados-container {
-    margin: 40px;
-    display: flex;
-    justify-content: end;
-}
-
-.pomodoros-completados-container p {
-    margin: 0 4px;
-    padding: 12px;
-    background-color: #4e4e4e;
-    color: #d9d9d9;
-    border-radius: 5px;
-    font-size: 32px;
-}
-
-.pomodoros-completados-text {
-    opacity: .5;
-}
-
-.pomodoros-completados-text:hover {
-    opacity: 1;
-    cursor: pointer;
+    font-size: 38px;
 }
