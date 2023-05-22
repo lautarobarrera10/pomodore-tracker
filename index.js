@@ -1,6 +1,5 @@
 // Variables del cronometro
 let descanso = false;
-let activado = false;
 let segundo1 = 0;
 let segundo2 = 0;
 let minuto1 = 2;
@@ -28,11 +27,7 @@ function setearTiempo(m1,m2,s1,s2){
 // Timbre de pomodoro completado
 const audio = document.querySelector('#audio');
 
-// Botones
-const playButton = document.querySelector('#play-button');
-const stopButton = document.querySelector('#stop-button');
-const playandpauseIcon = document.querySelector('#playandpause-icon');
-const checkButton = document.querySelector('#check-button');
+
 
 // Mensaje de transición
 const mensajeContainer = document.querySelector('.mensaje-container');
@@ -43,13 +38,7 @@ let pomodorosCompletados = 0;
 const completadosDOM = document.querySelector('.pomodoros-completados');
 completadosDOM.textContent = pomodorosCompletados;
 
-playButton.addEventListener('click', () => {
-    if (!activado) {
-        activarCronometro();
-    } else {
-        pausarCronometro();
-    }
-});
+
 
 // Boton de stop
 stopButton.addEventListener('click', () => {
@@ -104,18 +93,8 @@ segundo2DOM.textContent = segundo2;
 minuto1DOM.textContent = minuto1;
 minuto2DOM.textContent = minuto2;
 
-function activarCronometro() {
-    if (!activado) {
-        activado = true;
-        playandpauseIcon.textContent = 'pause';
-        setTimeout(avanzarUnsegundo, 1000);
-    }
-}
 
-function pausarCronometro() {
-    activado = false;
-    playandpauseIcon.textContent = 'play_arrow';
-}
+
 
 function avanzarUnsegundo() {
     // Se ejecuta solo si el cronometro está activado
