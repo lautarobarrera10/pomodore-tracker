@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Pomodoro Tracker</title>
+    <title>Pomodore Tracker</title>
     <link rel="stylesheet" href="./style.css">
 
     <!-- Fuentes -->
@@ -21,23 +21,12 @@
         <div class="cronometro">
         </div>
     </div>
-    <div class="mensaje-container">
-        <p class="mensaje">El descanso comenzará automaticamente en 10 segundos...</p>
-    </div>
     <section class="botones">
-        <button class="button" id="stop-button" type="button">
-            <span class="material-icons">replay</span>
-        </button>
         <button class="button" id="play-button" type="button">
             <span class="material-icons" id="playandpause-icon">play_arrow</span>
         </button>
-        <button class="button" id="check-button" type="button">
-            <span class="material-icons" tooltip="Completar">check</span>
-            <span class="tooltiptext">Completar</span>
-        </button>
     </section>
     <audio id="audio" src="./media/timbre.mp3"></audio>
-    <script src="./index.js"></script>
-    <script src="./cronometro.js"></script>
+    <script src="./chronometer.js"></script>
 </body>
 </html>

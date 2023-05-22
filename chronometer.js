@@ -1,8 +1,20 @@
 // Variable para guardar el tiempo del crónometro en milisegundos
 let timeInMillisSeconds = 25 * 60 * 1000;
+document.title = "Pomodore Tracker " + formatTime(timeInMillisSeconds);
+
+// Sonido de campana
+const BELL = document.querySelector('#audio');
+
+// Variable para pomodoros completados
+let pomodoresCompleted = 0;
+const POMODORES_COMPLETED_DOM = document.querySelector('.pomodoros-completados');
+POMODORES_COMPLETED_DOM.textContent = pomodoresCompleted;
 
 // ¿El crónometro está activado?
 let activado = false;
+
+// ¿Estamos en descanso?
+let breather = false;
 
 // Variable para guardar tiempo transcurrido al dar play
 let tiempoTranscurrido;
@@ -55,19 +67,29 @@ function ActivateChronometer(){
     PLAY_AND_PAUSE_ICON.textContent = 'pause';
     // Variable para guardar el la hora en la que se activó
     let horaInicio = Date.now();
-    // Iniciamos un intervalo de 0.5 segundos
+    // Iniciamos un intervalo de 0.2 segundos
     let interval = setInterval(()=> {
         // Si el crónometro está activado
         if (activado) {
             // El tiempo transcurrido es igual la hora actual menos la hora de inicio
             tiempoTranscurrido = Date.now() - horaInicio;
             // Actualizamos en el DOM con el tiempo inicial de milisegundos menos el tiempo transcurrido
+            document.title = "Pomodore Tracker " + formatTime(timeInMillisSeconds - tiempoTranscurrido);
             CHRONOMETER_IN_DOM.textContent = formatTime(timeInMillisSeconds - tiempoTranscurrido);
+            // Si el tiempo es 0 o menos y no estamos en descanso terminar el pomodoro
+            if (timeInMillisSeconds - tiempoTranscurrido <= 0) {
+                if (breather){
+                    completeBreather();
+                } else {
+                    completePomodore();
+                }
+            }
+            // Si el tiempo es 0 o menos y estamos en descanso terminar el pomodoro
         } else {
             // Si el crónometro está desactivado terminamos el intervalo
             clearInterval(interval);
         }
-    }, 500);
+    }, 200);
 }
 
 // Función que desactiva el crónometro
@@ -78,4 +100,36 @@ function pauseChronometer(){
     PLAY_AND_PAUSE_ICON.textContent = 'play_arrow';
     // Al tiempo inicial le descontamos el tiempo transcurrido
     timeInMillisSeconds -= tiempoTranscurrido;
+}
+
+function completePomodore(){
+    ringBell();
+    pauseChronometer();
+    pomodoresCompleted++;
+    POMODORES_COMPLETED_DOM.textContent = pomodoresCompleted;
+    if (pomodoresCompleted % 4 == 0) {
+        startBreak(30 * 60 * 1000);
+    } else {
+        startBreak(5 * 60 * 1000);
+    }
+}
+
+function ringBell(){
+    BELL.play();
+}
+
+function startBreak(time){
+    timeInMillisSeconds = time;
+    breather = true;
+    CHRONOMETER_IN_DOM.textContent = formatTime(timeInMillisSeconds);
+    CHRONOMETER_IN_DOM.classList.add('descanso');
+}
+
+function completeBreather(){
+    ringBell();
+    pauseChronometer();
+    timeInMillisSeconds = 25 * 60 * 1000;
+    breather = false;
+    CHRONOMETER_IN_DOM.textContent = formatTime(timeInMillisSeconds);
+    CHRONOMETER_IN_DOM.classList.remove('descanso');
 }
