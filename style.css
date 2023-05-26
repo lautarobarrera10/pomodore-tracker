@@ -3,11 +3,15 @@ body {
     background-color: #1e1e1e;
 }
 
-.pomodoros-completados-container {
-    width: 660px;
-    margin: 0 auto;
+.app {
     display: flex;
-    justify-content: end;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.pomodoros-completados-container {
+    width: 317px;
+    margin: 0 auto;
 }
 
 .pomodoros-completados-container p {
@@ -29,49 +33,34 @@ body {
 }
 
 .cronometro-container {
+    margin: 0 auto;
+    width: 300px;
+    height: 300px;
+    border-radius: 50%;
     display: flex;
     justify-content: center;
-}
-
-.cronometro {
-    width: 500px;
-    display: flex;
-    justify-content: center;
-    background-color: #d9d9d9;
-    font-size: 120px;
-    font-weight: 600;
-    gap: 16px;
+    align-items: center;
+    background: conic-gradient(#5C81D9 3.6deg, #d9d9d9 0deg);
     box-shadow: 10px 10px 12px 0px rgba(0,0,0,0.49);
     -webkit-box-shadow: 10px 10px 12px 0px rgba(0,0,0,0.49);
     -moz-box-shadow: 10px 10px 12px 0px rgba(0,0,0,0.49);
 }
 
-.cronometro.descanso {
-    border: 5px solid green;
-}
-
-.numero-container.descanso {
-    height: 270px;
-    width: 140px;
-}
-
-.mensaje-container {
-    transition: all 1s;
-    opacity: 0;
-    margin: 10px auto;
+.cronometro {
+    width: 280px;
+    height: 280px;
+    border-radius: 50%;
     display: flex;
     justify-content: center;
-    background-color: #d9d9d91f;
-    border: 3px solid green;
-    font-family: 'Lato', sans-serif;
-    font-weight: 400;
-    color: white;
-    width: 660px;
-    font-size: 18px;
+    align-items: center;
+    font-size: 80px;
+    font-weight: 600;
+    background: #1e1e1e;
+    color: #d9d9d9;
 }
 
-.mensaje-container.activate {
-    opacity: 1;
+.cronometro.descanso {
+    border: 5px solid green;
 }
 
 .botones {
@@ -99,40 +88,4 @@ body {
 
 .button span {
     font-size: 38px;
-}
-
-#check-button:hover {
-    background-color: rgb(3, 112, 3);
-}
-
-#check-button .tooltiptext {
-    visibility: hidden;
-    width: 120px;
-    background-color: #4e4e4e;
-    color: #fff;
-    text-align: center;
-    padding: 5px 0;
-    border-radius: 6px;
-    font-size: 16px;
-   
-    /* Position the tooltip text - see examples below! */
-    position: absolute;
-    top: -40px;
-    left: -20px;
-    z-index: 1;
-}
-
-#check-button:hover .tooltiptext {
-    visibility: visible;
-}
-
-.tooltiptext::after {
-    content: " ";
-    position: absolute;
-    top: 100%; /* At the bottom of the tooltip */
-    left: 50%;
-    margin-left: -5px;
-    border-width: 5px;
-    border-style: solid;
-    border-color: #4e4e4e transparent transparent transparent;
 }

@@ -76,6 +76,7 @@ function ActivateChronometer(){
             // Actualizamos en el DOM con el tiempo inicial de milisegundos menos el tiempo transcurrido
             document.title = "Pomodore Tracker " + formatTime(timeInMillisSeconds - tiempoTranscurrido);
             CHRONOMETER_IN_DOM.textContent = formatTime(timeInMillisSeconds - tiempoTranscurrido);
+            updateProgress(timeInMillisSeconds - tiempoTranscurrido);
             // Si el tiempo es 0 o menos y no estamos en descanso terminar el pomodoro
             if (timeInMillisSeconds - tiempoTranscurrido <= 0) {
                 if (breather){
@@ -132,4 +133,18 @@ function completeBreather(){
     breather = false;
     CHRONOMETER_IN_DOM.textContent = formatTime(timeInMillisSeconds);
     CHRONOMETER_IN_DOM.classList.remove('descanso');
+}
+
+// Barra de progreso
+
+const BARRA_DOM = document.querySelector('.cronometro-container');
+let progress = 0;
+
+function updateProgress(time){
+    if (!breather){
+        let seconds = time / 1000;
+        progress = 100 - seconds / 15;
+    }
+
+    BARRA_DOM.style.background = `conic-gradient(#5C81D9 ${progress * 3.6}deg, #d9d9d9 0deg)`;
 }

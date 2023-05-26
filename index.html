@@ -19,16 +19,22 @@
 
 </head>
 <body>
-    <div class="pomodoros-completados-container"><p class="pomodoros-completados-text">Pomodoros completados: <span class="pomodoros-completados"></span></p></div>
-    <div class="cronometro-container">
-        <div class="cronometro">
+    <div class="app">
+        <div class="pomodoros-completados-container">
+            <p class="pomodoros-completados-text">Pomodoros completados: 
+                <span class="pomodoros-completados"></span>
+            </p>
         </div>
+        <div class="cronometro-container">
+            <div class="cronometro">
+            </div>
+        </div>
+        <section class="botones">
+            <button class="button" id="play-button" type="button">
+                <span class="material-icons" id="playandpause-icon">play_arrow</span>
+            </button>
+        </section>
     </div>
-    <section class="botones">
-        <button class="button" id="play-button" type="button">
-            <span class="material-icons" id="playandpause-icon">play_arrow</span>
-        </button>
-    </section>
     <audio id="audio" src="./media/timbre.mp3"></audio>
     <script src="./chronometer.js"></script>
 </body>
