@@ -1,12 +1,12 @@
 // Variable para guardar el tiempo del crónometro en milisegundos
-let timeInMillisSeconds = 25 * 60 * 1000;
+let timeInMillisSeconds = 2 * 1000;
 document.title = "Pomodore Tracker " + formatTime(timeInMillisSeconds);
 
 // Sonido de campana
 const BELL = document.querySelector('#audio');
 
 // Variable para pomodoros completados
-let pomodoresCompleted = 0;
+let pomodoresCompleted = 3;
 const POMODORES_COMPLETED_DOM = document.querySelector('.pomodoros-completados');
 POMODORES_COMPLETED_DOM.textContent = pomodoresCompleted;
 
@@ -122,8 +122,8 @@ function ringBell(){
 function startBreak(time){
     timeInMillisSeconds = time;
     breather = true;
+    updateProgress(time);
     CHRONOMETER_IN_DOM.textContent = formatTime(timeInMillisSeconds);
-    CHRONOMETER_IN_DOM.classList.add('descanso');
 }
 
 function completeBreather(){
@@ -141,10 +141,17 @@ const BARRA_DOM = document.querySelector('.cronometro-container');
 let progress = 0;
 
 function updateProgress(time){
+    let seconds = time / 1000;
     if (!breather){
-        let seconds = time / 1000;
         progress = 100 - seconds / 15;
+        BARRA_DOM.style.background = `conic-gradient(#5C81D9 ${progress * 3.6}deg, #d9d9d9 0deg)`;
+    } else {
+        if (pomodoresCompleted % 4 == 0) {
+            progress = 100 - seconds / 18;
+        } else {
+            progress = 100 - seconds / 3;
+        }
+        BARRA_DOM.style.background = `conic-gradient(green ${progress * 3.6}deg, #d9d9d9 0deg)`;
     }
 
-    BARRA_DOM.style.background = `conic-gradient(#5C81D9 ${progress * 3.6}deg, #d9d9d9 0deg)`;
 }
