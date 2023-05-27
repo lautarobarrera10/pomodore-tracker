@@ -1,12 +1,12 @@
 // Variable para guardar el tiempo del crónometro en milisegundos
-let timeInMillisSeconds = 2 * 1000;
+let timeInMillisSeconds = 25 * 60 * 1000;
 document.title = "Pomodore Tracker " + formatTime(timeInMillisSeconds);
 
 // Sonido de campana
 const BELL = document.querySelector('#audio');
 
 // Variable para pomodoros completados
-let pomodoresCompleted = 3;
+let pomodoresCompleted = 0;
 const POMODORES_COMPLETED_DOM = document.querySelector('.pomodoros-completados');
 POMODORES_COMPLETED_DOM.textContent = pomodoresCompleted;
 
