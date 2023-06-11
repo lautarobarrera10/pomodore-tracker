@@ -69,21 +69,6 @@ body {
     border: 5px solid green;
 }
 
-.progress-bar-container {
-    margin: 28px auto;
-    width: 300px;
-    height: 10px;
-    background-color: var(--primary-color);
-    box-shadow: hidden;
-}
-
-.progress-bar {
-    width: 100%;
-    height: 100%;
-    background-color: var(--light-dark-color);
-    transform: translate(100px);
-}
-
 .botones {
     margin-top: 20px;
     display: flex;
